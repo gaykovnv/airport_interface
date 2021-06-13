@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+<div class="container">
+<div class="row">
+    <div id="payment">
+        <div class="navbar">
+            <div class="price">
+                <span class="text">Итоговая стоимость:</span>
+                <p class="priceNumber"><h4>{{booking.allPrice}}p.</h4></p>
+            </div>
+        </div>
+        <div class="top" align="center">
+            <label>
+                <input type="checkbox" checked="checked" disabled/>
+                <span>выбрать рейс</span>
+            </label>
+            <label>
+                <input type="checkbox" checked="checked" disabled/>
+                <span>Персональные данные</span>
+            </label>
+            <label>
+                <input  type="checkbox" checked="checked" />
+                <span class="colorBlue">Оплата</span>
+            </label>
+            <label>
+                <input type="checkbox" checked="checked" disabled/>
+                <span>Завершие заказа</span>
+            </label>
+        </div>
+        <div class="col position">
+            <div class="invalid" v-if="checkOwner"> enter owner</div>
+            <div class="input-field">
+                <label for="owner">Owner card</label>
+                <input class="autocomplete" id="owner" type="text"
+                       v-model="payment.owner"/><br/><br/>
+            </div>
+            <div class="invalid" v-if="checkNumberCard"> wrong number card</div>
+            <div class="input-field">
+                <label for="numberCard">Number Card</label>
+                <input class="autocomplete" id="numberCard" type="text" maxlength="19"
+                       v-model="payment.numberCard"/><br/><br/>
+            </div>
+            <div class="invalid" v-if="checkCVC"> wrong CVC</div>
+            <div class="input-field">
+                <label for="cvc">CVC</label>
+                <input class="autocomplete" id="cvc" type="password" maxlength="3"
+                       v-model="payment.cvc"/><br/><br/>
+            </div>
+            <div class="invalid" v-if="checkDeadlineCard"> wrong deadline card</div>
+            <div class="input-field">
+
+                <input class="autocomplete" id="deadline" type="date" maxlength="5"
+                       v-model="payment.deadlineCard"/><br/><br/>
+            </div>
+            <a class="btn btn-outline-success size" @click="sendPayment()">Оформить заказ</a>
+        </div>
+
+    </div>
+
+</div>
+</div>
+<style>
+    .navbar {
+        width: 100%;
+        height: 100px;
+        background: dimgray;
+        padding-top: 3px;
+        float: left;
+    }
+    .text {
+        width: 200px;
+        /*background: #d50000;*/
+        font-weight: 300;
+        color: white;
+
+    }
+
+    .price {
+        size: A5;
+        width: 200px;
+        margin-left: 350px;
+        border-radius: 10px;
+        padding-left: 40px;
+        color: orange;
+        font-weight: 900;
+
+    }
+    .top{
+        padding-top: 50px;
+    }
+    .colorBlue{
+        color: blue;
+    }
+    .position{
+        margin-left: 350px;
+    }
+    .invalid {
+        background-color: #e57373;
+        color: white;
+        width: 300px;
+        height: 20px;
+    }
+    .input-field{
+        width: 500px;
+    }
+</style>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+<script src="js/payment.js"></script>
+</body>
+</html>

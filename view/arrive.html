@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div>
+            <a class="btn btn-success" href="main.html">Back</a>
+        </div>
+        <div class="col">
+            <div id="arrive">
+                <div class="input-field col toCity">
+                    <label for="toCity">from City</label>
+                    <input type="text" id="toCity" v-model="send.fromCity"/>
+                </div>
+                <div class="col filterCity">
+                    <input class="btn btn-success" type="submit" value="Найти рейсы" @click="findByFilterArrive()"/>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>№ рейса</th>
+                        <th>Летит из</th>
+                        <th>время вылета</th>
+                        <th>Времы прилета</th>
+                        <th>Статус</th>
+                        <th>Компания</th>
+                        <th>Самолет</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr v-for="elem in timetableArrive">
+                        <td>{{elem.numberFlight}}</td>
+                        <td>{{elem.fromCity}}</td>
+                        <td>{{elem.sending}}</td>
+                        <td>{{elem.arrive}}</td>
+                        <td>{{elem.status}}</td>
+                        <td>{{elem.company}}</td>
+                        <td>{{elem.airplane.model}}</td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+
+    .toCity{
+        margin-left: 100px;
+        width: 500px;
+    }
+    .filterCity{
+        margin-top: 30px;
+    }
+    body {
+        background: darkcyan;
+    }
+
+    .container {
+        background: white;
+        height: 900px;
+        width: 1200px;
+        padding-left: 170px;
+        padding-top: 50px;
+    }
+</style>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+<script src="js/arrive.js"></script>
+</body>
+</html>
